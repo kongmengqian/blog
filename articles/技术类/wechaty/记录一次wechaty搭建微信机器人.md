@@ -119,10 +119,11 @@ A：一些简单的 nodejs C++扩展直接从源代码编译安装问题不大�
 node-pre-gyp 需要开发者将各平台编译好的二进制包上传到网络上，并在 package.json 的`binary`字段指明二进制包的位置。然而，很多开发者选择将二进制包上传到 aws 上，导致国内无法正常下载（被墙）。幸好，可以在 npm 中设置`--{module_name}_binary_host_mirror`选项来指定二进制包的位置。
 
 参考资料
-[如何用 6 行代码写出微信聊天机器人——李佳芮](https://lijiarui.github.io/chatbot/2016-11-20-wechaty-wuli-usecase.html)
-[李佳芮 github](https://github.com/lijiarui)
-[github 上的](https://github.com/nodejs/node-gyp)[node-gyp](https://github.com/nodejs/node-gyp)[文档](https://github.com/nodejs/node-gyp)
-[python2.7.x 官网下载地址](https://www.python.org/downloads/release/python-2716/)
-[使用 node-pre-gyp 加速二进制包安装](http://jingsam.github.io/2017/01/12/node-pre-gyp-mirror.html?utm_source=tuicool&utm_medium=referral)
-[桔子互动官网](https://www.botorange.com/)
-[wechaty 官网](https://docs.chatie.io/v/zh/)
+
+- [如何用 6 行代码写出微信聊天机器人——李佳芮](https://lijiarui.github.io/chatbot/2016-11-20-wechaty-wuli-usecase.html)
+- [李佳芮 github](https://github.com/lijiarui)
+- [github 上的](https://github.com/nodejs/node-gyp)[node-gyp](https://github.com/nodejs/node-gyp)[文档](https://github.com/nodejs/node-gyp)
+- [python2.7.x 官网下载地址](https://www.python.org/downloads/release/python-2716/)
+- [使用 node-pre-gyp 加速二进制包安装](http://jingsam.github.io/2017/01/12/node-pre-gyp-mirror.html?utm_source=tuicool&utm_medium=referral)
+- [桔子互动官网](https://www.botorange.com/)
+- [wechaty 官网](https://docs.chatie.io/v/zh/)

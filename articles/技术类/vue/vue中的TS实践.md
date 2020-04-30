@@ -770,8 +770,8 @@ export default {
 
 # 参考资料
 
-[vue-property-decorator 使用指南](https://juejin.im/post/5c173a84f265da610e7ffe44)(有一些示例)
-[vue-property-decorator 使用手册](https://segmentfault.com/a/1190000019906321)(示例+用法解读)
-[ES6-装饰器](http://es6.ruanyifeng.com/#docs/decorator)（想要理解装饰器可以阅读这篇文章）
-[Vuex 文档](https://vuex.vuejs.org/zh/)（要在 ts 中使用状态管理的话，请先学习 vuex，再学习使用 vuex-class）
-[vue + typescript + vuex + vuex-class 如何使用！！！！！](https://blog.csdn.net/qq_33447462/article/details/85251527)（vuex-class 不知道怎么用可以看这篇文章）
+- [vue-property-decorator 使用指南](https://juejin.im/post/5c173a84f265da610e7ffe44)(有一些示例)
+- [vue-property-decorator 使用手册](https://segmentfault.com/a/1190000019906321)(示例+用法解读)
+- [ES6-装饰器](http://es6.ruanyifeng.com/#docs/decorator)（想要理解装饰器可以阅读这篇文章）
+- [Vuex 文档](https://vuex.vuejs.org/zh/)（要在 ts 中使用状态管理的话，请先学习 vuex，再学习使用 vuex-class）
+- [vue + typescript + vuex + vuex-class 如何使用！！！！！](https://blog.csdn.net/qq_33447462/article/details/85251527)（vuex-class 不知道怎么用可以看这篇文章）
