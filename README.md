@@ -27,5 +27,3 @@
 - [记录一次 wechaty 搭建微信机器人](https://github.com/kongmengqian/blog/blob/master/articles/技术类/wechaty/记录一次wechaty搭建微信机器人.md)
 
 ## 生活类文章（读书笔记）
-
-- [认识自己](https://github.com/kongmengqian/blog/blob/master/articles/生活类/认识自己.md)
