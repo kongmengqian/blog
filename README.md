@@ -4,6 +4,10 @@
 
 ## 技术类文章
 
+### javaScript
+
+- [javaScript 数据类型，以及由它联想到的一些问题](https://github.com/kongmengqian/blog/blob/master/articles/技术类/JavaScript/javaScript数据类型，以及由它联想到的一些问题.md)
+
 ### vue 技术栈
 
 - [vue 中的 TS 实践](https://github.com/kongmengqian/blog/blob/master/articles/技术类/vue/vue中的TS实践.md)
