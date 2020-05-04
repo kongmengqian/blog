@@ -7,6 +7,7 @@
 ### javaScript
 
 - [javaScript 数据类型，以及由它联想到的一些问题](https://github.com/kongmengqian/blog/blob/master/articles/技术类/JavaScript/javaScript数据类型，以及由它联想到的一些问题.md)
+- [原型链的理解](https://github.com/kongmengqian/blog/blob/master/articles/技术类/JavaScript/原型链的理解.md)
 
 ### vue 技术栈
 

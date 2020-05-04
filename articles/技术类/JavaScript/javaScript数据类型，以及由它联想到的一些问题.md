@@ -43,6 +43,54 @@ typeof a; // 'undefinde'
 
 typeof --> undefinde string number boolean function 是可以被区分出来的，array object，null 都是 object，需要用上述的方式去区分。
 
+### 原理浅析
+
+#### typeof
+
+要想弄明白为什么 `typeof` 判断 `null` 为 `object`，其实需要从 js 底层如何存储变量类型来说其。虽然说，这是 JavaScript 设计的一个 bug。
+
+在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 `null` 代表的是空指针（大多数平台下值为 `0x00`），因此，`null` 的类型标签是 0，`typeof null` 也因此返回 "object"。曾有一个 ECMAScript 的修复提案（通过选择性加入的方式），但被拒绝了。该提案会导致 `typeof null === 'null'`。
+js 在底层存储变量的时候，会在变量的机器码的低位 1-3 位存储其类型信息：
+
+- 1：整数
+- 110：布尔
+- 100：字符串
+- 010：浮点数
+- 000：对象
+
+但是，对于`undefined` 和`null`来说，这两个值的信息存储是有点特殊的：
+
+- null：所有机器码均为 0
+- undefined：用 −2^30 整数来表示
+
+所以在用 typeof 来判断变量类型的时候，我们需要注意，最好是用 typeof 来判断基本数据类型（包括 symbol），避免对 null 的判断。
+
+#### instanceof
+
+`object instanceof constructor`
+
+`instanceof` 和 `typeof` 非常的类似。`instanceof` 运算符用来检测 `constructor.prototype` 是否存在于参数 `object` 的原型链(即`object.__proto__`)上。与 `typeof` 方法不同的是，`instanceof` 方法要求开发者明确地确认对象为某特定类型。它可以判断一个实例是否是其父类型或者祖先类型的实例。
+
+```js
+// 内部判断方式
+function instance_of(L, R) {
+  //L 表示左表达式，R 表示右表达式
+  var O = R.prototype; // 取 R 的显示原型
+  L = L.__proto__; // 取 L 的隐式原型
+  while (true) {
+    if (L === null) return false;
+    if (O === L)
+      // 这里重点：当 O 严格等于 L 时，返回 true
+      return true;
+    L = L.__proto__;
+  }
+}
+```
+
+参考资料：
+
+- [【THE LAST TIME】一文吃透所有 JS 原型相关知识点](https://juejin.im/post/5dba456d518825721048bce9)
+
 **创建数据有哪些方式：**
 
 ```js
@@ -182,7 +230,3 @@ JSON.parse(JSON.stringify(a)); // "2020-05-03T09:23:02.398Z"
 - [js 闭包测试](https://www.cnblogs.com/rubylouvre/p/3345294.html)(测试了闭包对垃圾回收机制的影响，以及针对不同的 js 引擎，做了一些测试)
 - [JavaScript 闭包的底层运行机制](http://blog.leapoahead.com/2015/09/15/js-closure/)
 - [[译]发现 JavaScript 中闭包的强大威力](https://juejin.im/post/5c4e6a90e51d4552266576d2)
-
-### 原型链
-
-简单的讲，是有血缘关系的链条
