@@ -6,29 +6,33 @@
 
 ### javaScript
 
-- [javaScript 数据类型，以及由它联想到的一些问题](https://github.com/kongmengqian/blog/blob/master/articles/技术类/JavaScript/javaScript数据类型，以及由它联想到的一些问题.md)
-- [原型链的理解](https://github.com/kongmengqian/blog/blob/master/articles/技术类/JavaScript/原型链的理解.md)
+- [javaScript 数据类型，以及由它联想到的一些问题](./articles/技术类/JavaScript/javaScript数据类型，以及由它联想到的一些问题.md)
+- [原型链的理解](./articles/技术类/JavaScript/原型链的理解.md)
 
 ### vue 技术栈
 
-- [vue 中的 TS 实践](https://github.com/kongmengqian/blog/blob/master/articles/技术类/vue/vue中的TS实践.md)
+- [vue 中的 TS 实践](./articles/技术类/vue/vue中的TS实践.md)
 
 ### webpack 构建工具
 
-- [webpack 配置 vue、vant 多页面项目](https://github.com/kongmengqian/blog/blob/master/articles/技术类/webpack/webpack配置vue、vant多页面项目.md)
-- [vue 的 webpack 配置文件](https://github.com/kongmengqian/blog/blob/master/articles/技术类/webpack/vue的webpack配置文件.md)
+- [webpack 配置 vue、vant 多页面项目](./articles/技术类/webpack/webpack配置vue、vant多页面项目.md)
+- [vue 的 webpack 配置文件](./articles/技术类/webpack/vue的webpack配置文件.md)
 
 ### canvas 踩坑
 
-- [canvas 转 img 踩坑之旅](https://github.com/kongmengqian/blog/blob/master/articles/技术类/canvas/canvas转img踩坑之旅.md)
+- [canvas 转 img 踩坑之旅](./articles/技术类/canvas/canvas转img踩坑之旅.md)
 
 ### iframe 实践
 
-- [iframe、postMessage 实践](https://github.com/kongmengqian/blog/blob/master/articles/技术类/iframe/iframe、postMessage实践.md)
+- [iframe、postMessage 实践](./articles/技术类/iframe/iframe、postMessage实践.md)
+
+### HTTP
+
+- [简单总结 HTTP 缓存](./articles/技术类/HTTP/http缓存.md)
 
 ### 第三方工具使用
 
-- [记录 wechaty 的使用](https://github.com/kongmengqian/blog/blob/master/articles/技术类/wechaty/记录wechaty的使用.md)
-- [记录一次 wechaty 搭建微信机器人](https://github.com/kongmengqian/blog/blob/master/articles/技术类/wechaty/记录一次wechaty搭建微信机器人.md)
+- [记录 wechaty 的使用](./articles/技术类/wechaty/记录wechaty的使用.md)
+- [记录一次 wechaty 搭建微信机器人](./articles/技术类/wechaty/记录一次wechaty搭建微信机器人.md)
 
 ## 生活类文章（读书笔记）

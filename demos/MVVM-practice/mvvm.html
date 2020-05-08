@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>MVVM练习篇</h1>
+      <p>这是一个MVVM的练习记录</p>
+    </div>
+
+    <script src="./observe.js"></script>
+    <script src="./mvvm.js"></script>
+    <script>
+      let mvvm = new Mvvm({
+        el: "#app",
+        data: {
+          title: "MVVM练习篇",
+          content: "这是一个MVVM的练习记录",
+          list: [
+            {
+              id: 0,
+              name: "item1",
+            },
+          ],
+          test1: null,
+        },
+      });
+      // 测试代码
+      // console.log(mvvm._data.title); // "MVVM练习篇"
+      // console.log(mvvm.title); // "MVVM练习篇"
+      // mvvm.title = "MVVM练习篇-测试数据代理&数据劫持";
+      // console.log(mvvm.title); // "MVVM练习篇-测试数据代理&数据劫持"
+    </script>
+  </body>
+</html>
