@@ -21,8 +21,9 @@ Array.isArray([]); // ture 有兼容问题 ie9及以上才兼容
 对象：
 
 ```js
-Object.prototype.toString.call({}) // '[object Object]'
-var a = {}; a.**proto** === Object.prototype // true
+Object.prototype.toString.call({}); // '[object Object]'
+var a = {};
+a.__proto__ === Object.prototype; // true
 ```
 
 null：
