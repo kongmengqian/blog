@@ -212,6 +212,32 @@ JSON.parse(JSON.stringify(a)); // "2020-05-03T09:23:02.398Z"
 ```
 
 - 只能序列化对象的可枚举的自有属性，例如 如果 obj 中的对象是有构造函数生成的， 则使用 JSON.parse(JSON.stringify(obj))深拷贝后，会丢弃对象的 constructor；
+
+```js
+// 不知道理解的对不对
+var object1 = { a: 1 };
+
+// 可枚举属性默认为false
+Object.defineProperty(object1, "property1", {
+  value: 42,
+  writable: false,
+});
+
+console.log(object1); // {a: 1, property1:42 }
+console.log(JSON.parse(JSON.stringify(object1))); // {a: 1} 无法正确拷贝object1
+
+// 可枚举属性为true
+var object2 = { a: 1 };
+Object.defineProperty(object2, "property2", {
+  value: 42,
+  writable: false,
+  enumerable: true,
+});
+
+console.log(object2); // {a: 1, property2:42 }
+console.log(JSON.parse(JSON.stringify(object2))); // {a: 1,property2:42} 可以正确拷贝object2
+```
+
 - 对象中存在循环引用的情况也无法正确实现深拷贝；
 
   综上所述，要完美实现深拷贝的话需要自己封装函数，`deepClone(data){// 抽时间练习一下}`
