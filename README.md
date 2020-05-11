@@ -5,11 +5,16 @@
 ## 技术类文章
 
 - [react 和 vue 技术栈总结(研读原理和源码中)](./articles/技术类/react和vue技术栈总结.md)
+- [组件设计方法](https://github.com/dvajs/dva-docs/blob/master/v1/zh-cn/tutorial/01-概要.md)(基于 react+dva 技术栈)
 
 ### javaScript
 
 - [javaScript 数据类型，以及由它联想到的一些问题](./articles/技术类/JavaScript/javaScript数据类型，以及由它联想到的一些问题.md)
 - [原型链的理解](./articles/技术类/JavaScript/原型链的理解.md)
+
+### react 技术栈
+
+- [Dva-day01](./articles/技术类/react/Dva-day01.md)
 
 ### vue 技术栈
 
