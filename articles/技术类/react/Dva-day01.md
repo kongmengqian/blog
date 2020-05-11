@@ -162,6 +162,34 @@ app.start("#app");
 - Generator yield
 - async/await
 
+### 周边技术
+
+`几个业务视图长得差不多，model也存在少量差别`
+
+期望能够对 model 进行扩展，可以借助 dva 社区的[dva-model-extend]()库来做这件事
+
+换个角度，也可以通过工厂函数来生成 model
+
+```js
+function createModel(options) {
+  const { namespace, param } = options;
+  return {
+    namespace: `demo${namespace}`,
+    states: {},
+    reducers: {},
+    effects: {
+      *foo() {
+        // 这里可以根据param来确定下面这个call的参数
+        yield call();
+      },
+    },
+  };
+}
+
+const modelA = createModel({ namespace: "A", param: { type: "A" } });
+const modelB = createModel({ namespace: "A", param: { type: "B" } });
+```
+
 ## 技术文章
 
 - [Dva 概念](https://dvajs.com/guide/concepts.html#models)(主要就是对它的理解)
