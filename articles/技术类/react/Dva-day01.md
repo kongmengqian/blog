@@ -29,6 +29,7 @@ props.dispatch({
 export default {
   ...
   reducers: {
+    // (state, action) => newState
     add(state, { payload }) {
       return {
         ...state,
@@ -52,6 +53,7 @@ export default {
   ...
   // [namespace] 表示 model 里面的 namespace 值
   effects: {
+    // *(action, effect) => void
     *fetch({payload}, {select, call, put}){
 
       // select 可以用来访问其它 model，一般用来获取state
@@ -79,6 +81,8 @@ export default {
 export default {
   ...
   subscriptions:{
+    // ({dispatch, history}, done) => unlistenFunction
+    // 如果要使用 app.unmodel()，subscription 必须返回 unlisten 方法，用于取消数据订阅。
     setup({dispatch, history}, error){
       // 监听路由变化
       history.listen((location) => {

@@ -1,3 +1,5 @@
+import { delayed } from "../utils";
+
 export default {
   namespace: "example",
 
@@ -11,7 +13,9 @@ export default {
         if (location.pathname === "/") {
           dispatch({
             type: "save",
-            payload: { test: "初始化" },
+            payload: {
+              test: "监听路由",
+            },
           });
         }
       });
@@ -19,9 +23,23 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {
+    *fetch({ payload }, { call, put, select }) {
+      // 用来访问model
+      yield select((options) => {
+        console.log("effects-select", options);
+      });
       // eslint-disable-line
-      yield put({ type: "save" });
+      yield call(delayed);
+      yield put({
+        type: "save",
+        payload: {
+          list: [
+            { id: 0, content: "异步item0" },
+            { id: 1, content: "异步item1" },
+          ],
+          test: payload.test,
+        },
+      });
     },
   },
 

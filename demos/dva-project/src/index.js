@@ -1,4 +1,5 @@
 import dva from "dva";
+import createLoading from "dva-loading";
 import exampleModal from "./models/example";
 import exampleRouter from "./router";
 import "./index.css";
@@ -8,10 +9,10 @@ const app = dva({
   initialState: {
     example: {
       list: [
-        { id: 0, content: "item0" },
-        { id: 1, content: "item1" },
+        { id: 0, content: "默认item0" },
+        { id: 1, content: "默认item1" },
       ],
-      test: "test",
+      test: "默认数据",
     },
   },
 });
@@ -27,7 +28,7 @@ setTimeout(() => {
 }, 0);
 
 // 2. Plugins
-// app.use({});
+app.use(createLoading());
 
 // 3. Model
 app.model(exampleModal);
