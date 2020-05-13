@@ -44,9 +44,9 @@ typeof a; // 'undefinde'
 
 typeof --> undefinde string number boolean function 是可以被区分出来的，array object，null 都是 object，需要用上述的方式去区分。
 
-### 原理浅析
+## 原理浅析
 
-#### typeof
+### typeof
 
 要想弄明白为什么 `typeof` 判断 `null` 为 `object`，其实需要从 js 底层如何存储变量类型来说其。虽然说，这是 JavaScript 设计的一个 bug。
 
@@ -66,7 +66,7 @@ js 在底层存储变量的时候，会在变量的机器码的低位 1-3 位存
 
 所以在用 typeof 来判断变量类型的时候，我们需要注意，最好是用 typeof 来判断基本数据类型（包括 symbol），避免对 null 的判断。
 
-#### instanceof
+### instanceof
 
 `object instanceof constructor`
 
@@ -92,23 +92,76 @@ function instance_of(L, R) {
 
 - [【THE LAST TIME】一文吃透所有 JS 原型相关知识点](https://juejin.im/post/5dba456d518825721048bce9)
 
-**创建数据有哪些方式：**
+## 创建数据有哪些方式
 
 ```js
 // 对象
-var obj;
-// 用字面量方式创建
-obj = { a: 1 };
-//  => 相当于下面这个写法
-obj = Object.create(Object.prototype);
-// 可传参数，不传的话，默认创建一个空对象，即{}
-obj = new Object();
-// 有兼容性，可传两个参数：proto：新创建对象的原型对象；propertiesObject：可选，具体看API文档
-obj = Object.create({});
-var obj1;
-obj1 = Object.assign({}, obj); // 复制一个对象，浅拷贝
-obj1 = { ...obj }; // 同上
 
+// 用字面量方式创建
+var obj1 = {};
+// 可传参数，不传的话，默认创建一个空对象，即{}
+var obj2 = new Object();
+var obj3 = Object.create(Object.prototype);
+// 以上三种写法输出是同样的，是三个全新的对象，obj1和obj2的创建对象方式是等同的
+
+var _obj1 = {};
+var _obj2 = new Object(_obj1);
+// 创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
+var _obj3 = Object.create(_obj1);
+_obj1.a = 1;
+console.log(_obj1); // {a:1}
+console.log(_obj2); // {a:1}
+console.log(_obj3); // {}
+_obj2.b = 2;
+console.log(_obj1); // {a:1, b:2}
+console.log(_obj2); // {a:1, b:2}
+/*
+ * 总结
+ * _obj1和_obj2指向的同一个地址，a改变会影响b的变化，同样，b改变会影响a的变化，
+ * _obj3则不会随_obj1变化，因为通过Object.create()创建出来的是新对象，指向的是一个新地址，并且_obj3的原型对象是_obj1，原型对象会随着_obj1的改变而改变
+ */
+```
+
+![Object.create()和new Object()的区别](../../../img/Object.png)
+
+### `Object.create()`
+
+> 方法创建一个新对象，使用现有的对象来提供新创建的对象的`__proto__`，返回一个新对象，带着指定的原型对象和属性。
+
+语法：`Object.create(proto, propertiesObject)`
+
+- `proto`：新创建对象的原型对象。
+- `propertiesObject`：可选。如果没有指定为 `undefined`，则是要添加到新创建对象的**不可枚举（默认）属性**（即其**自身**定义的属性，而不是其原型链上的枚举属性）对象的属性描述符以及相应的属性名称。这些属性对应`Object.defineProperties()`的第二个参数。
+
+```js
+var o = Object.create(Object.prototype, {
+  // foo会成为所创建对象的数据属性
+  foo: {
+    writable: true,
+    configurable: true,
+    value: "hello",
+  },
+  // bar会成为所创建对象的访问器属性
+  bar: {
+    configurable: false,
+    get: function () {
+      return 10;
+    },
+    set: function (value) {
+      console.log("Setting `o.bar` to", value);
+    },
+  },
+});
+
+for (let key in o) {
+  console.log(key);
+}
+// 新增的两个属性都是不可枚举属性，输出为undefined
+
+Reflect.ownKeys(target); // ["foo", "bar"]
+```
+
+```js
 // 数组
 var a = [];
 var b = new Array();
@@ -128,9 +181,21 @@ var a = true;
 var b = new Boolean();
 ```
 
-Object.assign() 常见用法
+### `Object.assign()`
+
+> 方法用于将所有源对象**自身**的**可枚举属性**的值从一个或多个源对象复制到目标对象。它将返回目标对象。该方法使用源对象的`[[Get]]`和目标对象的`[[Set]]`，所以它会调用相关 getter 和 setter。如果合并源包含`getter`，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用`Object.getOwnPropertyDescriptor()和Object.defineProperty()` 。
+
+> `String`类型和 `Symbol`类型的属性都会被拷贝。其实就是合并对象，属于浅拷贝
+
+语法：`Object.assign(target, ...sources)`
+
+#### 常见用法
 
 ```js
+var obj = { a: 1 };
+obj = Object.assign({}, obj); // 复制一个对象，浅拷贝
+obj = { ...obj }; // 同上
+
 // 合并对象，且会合并相同属性的对象
 var o1 = { a: 1 };
 var o2 = { a: 11, b: 2 };
@@ -155,13 +220,17 @@ console.log(obj); // { a : 1, [Symbol("foo")]: 2 }
 Object.getOwnPropertySymbols(obj); // [Symbol(foo)]
 ```
 
-其他示例查看官方 API
+#### 其他示例查看官方 API
 
 - 继承属性和不可枚举属性是不能拷贝的
 - 异常会打断后续拷贝任务
 - 拷贝访问器
 
-其他知识点：属性描述符、可枚举属性、Object.defindProperty()、Object.getOwnPropertyDescriptor()
+> 注意：`Object.assign()`会触发`setter`，而展开操作符则不会
+
+## 其他知识点
+
+> 属性描述符、可枚举属性、Object.defindProperty()、Object.getOwnPropertyDescriptor()
 
 传送门
 
