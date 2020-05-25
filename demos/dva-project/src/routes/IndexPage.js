@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "dva";
+import Example from "../components/Example";
 import styles from "./IndexPage.css";
 
 function IndexPage(props) {
   console.log("props", props);
+  // 一开始 props.loading.effects = {}  isLoading = undefined
   const isLoading = props.loading.effects["example/fetch"];
   useEffect(() => {
     props.dispatch({
@@ -15,15 +17,39 @@ function IndexPage(props) {
   }, []);
   return (
     <div>
-      {isLoading && "加载中..."}
-      {!isLoading && (
+      {/* 添加 isLoading === undefined 的判断 */}
+      {isLoading || isLoading === undefined ? (
+        "加载中..."
+      ) : (
         <div className={styles.normal}>
           <h1 className={styles.title}>Yay! Welcome to dva!</h1>
           <div className={styles.welcome} />
           <ul className={styles.list}>
             {props.example.list &&
-              props.example.list.map((item) => {
-                return <li key={item.id}>{item.content}</li>;
+              props.example.list.map((item, index) => {
+                return (
+                  <li
+                    key={item.id}
+                    onClick={() => {
+                      const deepProps = [...item.deepProps];
+                      deepProps.push(item.content);
+                      const currentItem = { ...item, deepProps };
+                      const list = [...props.example.list];
+                      list[index] = currentItem;
+
+                      props.dispatch({
+                        type: "example/save",
+                        payload: {
+                          test: "用户点击行为-显示Example组件",
+                          currentItem,
+                          list,
+                        },
+                      });
+                    }}
+                  >
+                    {item.content}
+                  </li>
+                );
               })}
             <li>{props.example.test}</li>
             {/* <li>
@@ -35,6 +61,10 @@ function IndexPage(props) {
           </a>
         </li> */}
           </ul>
+          <div>
+            <h4>Example 组件 </h4>
+            <Example currentItemData={props.example.currentItem} />
+          </div>
           <button
             onClick={() => {
               const list = props.example.list;
@@ -43,6 +73,7 @@ function IndexPage(props) {
               list.push({
                 id: l,
                 content: `item${l}`,
+                deepProps: [],
               });
               props.dispatch({
                 type: "example/add",
@@ -61,6 +92,7 @@ function IndexPage(props) {
                 type: "example/fetch",
                 payload: {
                   test: "用户点击行为-异步请求数据",
+                  currentItem: {},
                 },
               });
             }}

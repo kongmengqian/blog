@@ -15,7 +15,7 @@ vue 的思想是响应式的，它的数据是可变的，可以被重新赋值�
 
 2. react 和 vue 的编写方式不同
 
-react 是用 jsx 的方式来编写的，所有的都是通过 js 写的，html 也都放在 js 里面，包括 css 也可以（我没用过，在别的地方有看到过，`styled-component`）
+react 是用 jsx 的方式来编写的，所有的都是通过 js 写的，html 也都放在 js 里面，包括 css 也可以（我没用过，在别的地方有看到过，`styled-component`）。
 
 vue 的话是分成三块，我觉得跟 jquery 时代比较像，html 是包裹在`<template></template>`标签里面，js 是包裹在`<script></script>`标签里面，css 是包裹在`<style></style>`，集中在一起，当然也是可以分开的，我个人觉得这种方式写组件会挺方便的，不需要文件跳来跳去的，只需要在一个文件里面操作就可以，也方便以后的维护，关于组件的东西都在这个文件里头，简单。
 

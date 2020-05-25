@@ -9,16 +9,16 @@ export default {
     setup({ dispatch, history }) {
       // eslint-disable-line
       console.log("subscriptions setup", history);
-      history.listen((location) => {
-        if (location.pathname === "/") {
-          dispatch({
-            type: "save",
-            payload: {
-              test: "监听路由",
-            },
-          });
-        }
-      });
+      // history.listen((location) => {
+      //   if (location.pathname === "/") {
+      //     dispatch({
+      //       type: "save",
+      //       payload: {
+      //         test: "监听路由",
+      //       },
+      //     });
+      //   }
+      // });
     },
   },
 
@@ -34,10 +34,18 @@ export default {
         type: "save",
         payload: {
           list: [
-            { id: 0, content: "异步item0" },
-            { id: 1, content: "异步item1" },
+            {
+              id: 0,
+              content: "异步item0",
+              deepProps: [],
+            },
+            {
+              id: 1,
+              content: "异步item1",
+              deepProps: [],
+            },
           ],
-          test: payload.test,
+          ...payload,
         },
       });
     },

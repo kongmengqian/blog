@@ -119,7 +119,19 @@ console.log(_obj2); // {a:1, b:2}
  * 总结
  * _obj1和_obj2指向的同一个地址，a改变会影响b的变化，同样，b改变会影响a的变化，
  * _obj3则不会随_obj1变化，因为通过Object.create()创建出来的是新对象，指向的是一个新地址，并且_obj3的原型对象是_obj1，原型对象会随着_obj1的改变而改变
+ * 要解决互相影响的问题，需要在创建的时候，对原对象进行深拷贝，修改为下面的写法（数据结构简单就用展开运算符就可以了）
  */
+var _obj1 = {};
+var _obj2 = new Object({ ..._obj1 });
+// 创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
+var _obj3 = Object.create({ ..._obj1 });
+_obj1.a = 1;
+console.log(_obj1); // {a:1}
+console.log(_obj2); // {}
+console.log(_obj3); // {}
+_obj2.b = 2;
+console.log(_obj1); // {a:1}
+console.log(_obj2); // {b:2}
 ```
 
 ![Object.create()和new Object()的区别](../../../img/Object.png)

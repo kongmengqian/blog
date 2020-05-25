@@ -9,23 +9,32 @@ const app = dva({
   initialState: {
     example: {
       list: [
-        { id: 0, content: "默认item0" },
-        { id: 1, content: "默认item1" },
+        {
+          id: 0,
+          content: "默认item0",
+          deepProps: [],
+        },
+        {
+          id: 1,
+          content: "默认item1",
+          deepProps: [],
+        },
       ],
       test: "默认数据",
+      currentItem: {},
     },
   },
 });
-console.log(app);
-setTimeout(() => {
-  const store = app._store;
-  /**
-   * dispatch:(action: {type: string, [key: string]?: any}) => viod
-   * getState:() => return {routing: {location:any}, @@dva:number, [key:string]:any} 最后一个值就是initialState里面的状态
-   */
-  console.log(store);
-  console.log(store.getState());
-}, 0);
+// console.log(app);
+// setTimeout(() => {
+//   const store = app._store;
+//   /**
+//    * dispatch:(action: {type: string, [key: string]?: any}) => viod
+//    * getState:() => return {routing: {location:any}, @@dva:number, [key:string]:any} 最后一个值就是initialState里面的状态
+//    */
+//   console.log(store);
+//   console.log(store.getState());
+// }, 0);
 
 // 2. Plugins
 app.use(createLoading());
