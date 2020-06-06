@@ -10,9 +10,15 @@
 
 - [javaScript 数据类型，以及由它联想到的一些问题](./articles/技术类/JavaScript/javaScript数据类型，以及由它联想到的一些问题.md)
 - [原型链的理解](./articles/技术类/JavaScript/原型链的理解.md)
+- [事件循环机制](./articles/技术类/JavaScript/事件循环机制.md)
+- [ES6——函数的扩展](./articles/技术类/JavaScript/ES6——函数的扩展.md)
+- [箭头函数](./articles/技术类/JavaScript/箭头函数.md)
+- [闭包](./articles/技术类/JavaScript/闭包.md)
+- [Promise](./articles/技术类/JavaScript/Promise.md)
 
 ### react 技术栈
 
+- [react-day01](./articles/技术类/react/react-day01.md)
 - [Dva-day01](./articles/技术类/react/Dva-day01.md)
 
 ### vue 技术栈
@@ -44,6 +50,7 @@
 ### css
 
 - [清浮动](./articles/技术类/css/清浮动.md)
+- [移动端适配](./articles/技术类/css/移动端适配.md)
 
 ## 生活类文章（读书笔记）
 
