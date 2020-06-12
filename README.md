@@ -2,6 +2,8 @@
 
 > Share my learning and life on Blog.--2020.04.30
 
+[我的前端图谱](./漫漫前端长路.xmind)
+
 ## 技术类文章
 
 - [react 和 vue 技术栈总结(研读原理和源码中)](./articles/技术类/react和vue技术栈总结.md)
