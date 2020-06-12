@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "dva";
 import Example from "../components/Example";
 import styles from "./IndexPage.css";
+import { delayed } from "../utils";
 
 function IndexPage(props) {
   console.log("props", props);
+
   // 一开始 props.loading.effects = {}  isLoading = undefined
   const isLoading = props.loading.effects["example/fetch"];
   useEffect(() => {
@@ -31,10 +33,14 @@ function IndexPage(props) {
                   <li
                     key={item.id}
                     onClick={() => {
-                      const deepProps = [...item.deepProps];
+                      const deepProps = item.deepProps;
                       deepProps.push(item.content);
-                      const currentItem = { ...item, deepProps };
-                      const list = [...props.example.list];
+                      console.log(item, "==================");
+                      // 每次指向一个新的指针地址
+                      // const currentItem = {...item, deepProps};
+                      // 指向的是同一个指针地址，deepProps的变化，<Example>组件用React.PureComponent的时候察觉不到状态的变化，从而出现bug
+                      const currentItem = item;
+                      const list = props.example.list;
                       list[index] = currentItem;
 
                       props.dispatch({
@@ -63,7 +69,13 @@ function IndexPage(props) {
           </ul>
           <div>
             <h4>Example 组件 </h4>
-            <Example currentItemData={props.example.currentItem} />
+            <Example currentItemData={props.example.currentItem}>
+              <div>
+                <div>1</div>
+                <div>2</div>
+              </div>
+              <div>3</div>
+            </Example>
           </div>
           <button
             onClick={() => {

@@ -30,6 +30,7 @@ export default {
       });
       // eslint-disable-line
       yield call(delayed);
+
       yield put({
         type: "save",
         payload: {
