@@ -25,6 +25,14 @@ git reset --hard commit_id
 版本库中的代码回退到上一个版本
 版本库中的代码回退到前 100 个版本
 版本库中的代码回退到指定 commit_id 的版本
+（回退到版本二，失去版本三的提交记录）
+
+```
+git revert -no-commit commit_id
+git revert -n commit_id
+```
+
+回滚，当前这条提交的内容从版本库中删除，会创建一个新的提交并回滚指定的 commit_id 的提交修改（回滚版本二，会提交一个版本四，保留版本三的内容）
 
 ## 暂存
 
