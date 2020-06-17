@@ -25,6 +25,7 @@ const app = dva({
     },
   },
 });
+
 // console.log(app);
 // setTimeout(() => {
 //   const store = app._store;
