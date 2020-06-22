@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "dva";
+import mynpm from "npm-libs-project";
 import Example from "../components/Example";
 import styles from "./IndexPage.css";
 import { delayed } from "../utils";
 
 function IndexPage(props) {
   console.log("props", props);
-
+  // test my npm
+  mynpm();
   // 一开始 props.loading.effects = {}  isLoading = undefined
   const isLoading = props.loading.effects["example/fetch"];
   useEffect(() => {
