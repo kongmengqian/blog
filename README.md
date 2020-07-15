@@ -32,6 +32,11 @@
 
 - [webpack 配置 vue、vant 多页面项目](./articles/技术类/webpack/webpack配置vue、vant多页面项目.md)
 - [vue 的 webpack 配置文件](./articles/技术类/webpack/vue的webpack配置文件.md)
+- [babel 编译理解](./articles/技术类/webpack/babel编译理解.md)
+
+### npm
+
+- [手把手教你搭建一个基于 react+TS+antd 的组件库（1）](./articles/技术类/npm/手把手教你搭建一个基于react+TS+antd的组件库（1）.md)
 
 ### canvas 踩坑
 
@@ -54,6 +59,10 @@
 
 - [清浮动](./articles/技术类/css/清浮动.md)
 - [移动端适配](./articles/技术类/css/移动端适配.md)
+
+### git
+
+- [GIT 命令+可视化工具](./articles/技术类/git/GIT命令+可视化工具.md)
 
 ## 生活类文章（读书笔记）
 
