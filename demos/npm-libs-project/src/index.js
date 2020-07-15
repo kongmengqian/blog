@@ -1,3 +1,4 @@
 import mynpm from "./a";
 import style from "./index.less";
-mynpm();
+// mynpm();
+export default mynpm;

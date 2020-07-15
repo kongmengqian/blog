@@ -3,7 +3,7 @@ import { connect } from "dva";
 import mynpm from "npm-libs-project";
 import Example from "../components/Example";
 import styles from "./IndexPage.css";
-import { delayed } from "../utils";
+// import { delayed } from "../utils";
 
 function IndexPage(props) {
   console.log("props", props);
