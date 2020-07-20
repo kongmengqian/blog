@@ -1,4 +1,4 @@
-# 手把手教你搭建一个基于 react+TS+antd 的组件库（1）
+# 手把手教你搭建一个基于 react+TS+antd 的组件库(1)
 
 > [项目地址：kongmengqian/npm-my-libs](https://github.com/kongmengqian/npm-my-libs)
 
