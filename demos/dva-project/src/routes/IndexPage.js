@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "dva";
-import mynpm from "npm-libs-project";
 import Example from "../components/Example";
 import styles from "./IndexPage.css";
+import { Link } from "dva/router";
 // import { delayed } from "../utils";
 
 function IndexPage(props) {
   console.log("props", props);
-  // test my npm
-  mynpm();
+
   // 一开始 props.loading.effects = {}  isLoading = undefined
   const isLoading = props.loading.effects["example/fetch"];
   useEffect(() => {
@@ -28,6 +27,13 @@ function IndexPage(props) {
         <div className={styles.normal}>
           <h1 className={styles.title}>Yay! Welcome to dva!</h1>
           <div className={styles.welcome} />
+
+          <ul>
+            <li>
+              <Link to="/demo">npm包——kongmq-demo 页面</Link>
+            </li>
+          </ul>
+
           <ul className={styles.list}>
             {props.example.list &&
               props.example.list.map((item, index) => {
