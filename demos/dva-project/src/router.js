@@ -1,6 +1,7 @@
 import React from "react";
 import { Router, Route, Switch } from "dva/router";
 import IndexPage from "./routes/IndexPage";
+import DemoPage from "./page/demo";
 
 function RouterConfig(options) {
   /**
@@ -23,6 +24,7 @@ function RouterConfig(options) {
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={IndexPage} />
+        <Route path="/demo" exact component={DemoPage} />
       </Switch>
     </Router>
   );

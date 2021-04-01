@@ -36,7 +36,8 @@
 
 ### npm
 
-- [手把手教你搭建一个基于 react+TS+antd 的组件库（1）](./articles/技术类/npm/手把手教你搭建一个基于react+TS+antd的组件库（1）.md)
+- [手把手教你搭建一个基于 react+TS+antd 的组件库(1)](<./articles/技术类/npm/手把手教你搭建一个基于react+TS+antd的组件库(1).md>)
+- [手把手教你搭建一个基于 react+TS+antd 的组件库(2)](<./articles/技术类/npm/手把手教你搭建一个基于react+TS+antd的组件库(2).md>)
 
 ### canvas 踩坑
 

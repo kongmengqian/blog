@@ -10,6 +10,7 @@
   "dependencies": {
     "dva": "^2.4.1",
     "dva-loading": "^3.0.20",
+    "kongmq-demo": "0.0.6",
     "npm-libs": "git+https://github.com/kongmengqian/npm-my-libs.git",
     "react": "^16.13.1",
     "react-dom": "^16.2.0"
