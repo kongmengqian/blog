@@ -103,6 +103,17 @@
     var sanitizeNames = R.compose(map(toLower) , map(_underscore));
 
     console.log("sanitizeNames:", sanitizeNames(["Hello World"]));
+    
+    // map 的组合律
+    // =============
+    // var law = R.compose(map(f), map(g)) == map(R.compose(f, g));
+    // =============
+
+    // 优化后
+    var _sanitizeNames = map(R.compose(toLower, _underscore));
+
+    console.log("优化后 sanitizeNames:", _sanitizeNames(["Hello World"]));
+
 
     // 彩蛋 1:
     // ============
