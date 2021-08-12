@@ -4,10 +4,12 @@
 
 react 是通过调用`this.setState()`这个函数去执行的，vue 是可以直接用`this.xxx = xxx`赋值的形式去改变。
 
-react 整体是函数式的思想，把组件设计成纯组件，状态和逻辑通过参数传入，是单向数据流。在`setState`之后会重新渲染，你可以在`shouldComponentUpdate`这个生命周期中优化（状态没有发生改变的话，返回`false`，可以不进行`render`）`React.PureComponent`以浅层对比`prop`和`state`的方式实现了`shouldComponentUpdate()`。`setState()`是异步的，react 做了优化（什么优化呢，我还没看源码）调用的时候就要注意一下。
+react 整体是函数式的思想，把组件设计成纯组件，状态和逻辑通过参数传入，是单向数据流。在`setState`之后会重新渲染，你可以在`shouldComponentUpdate`这个生命周期中优化（状态没有发生改变的话，返回`false`，可以不进行`render`）`React.PureComponent`以浅层对比`prop`和`state`的方式实现了`shouldComponentUpdate()`。`setState()`在合成事件和生命周期中，是“异步”的，在原生事件和`setTimeout`中是同步的。
+
+_说明：“异步”打了引号,因为 setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数（生命周期）的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形式了所谓的“异步”。_
 
 **展开：`React.PureComponent`**
-它只是在数据比较简单的情况下才有效，如果数据结构复杂，那么会出现，你希望他重新`render()`，但是它没有，`react`提供了一个`forceUpdate()`方法，可以强制让组件重新渲染，这个方法会跳过该组件的`shouldComponentUpdate()`方法，但它的子组件会触发正常的生命周期，包括`shouldComponentUpdate()`方法，如果返回`true`，那么`React`仍然会更新`Dom`。
+它只是在数据比较简单的情况下才有效，如果数据结构复杂，那么会出现，你希望他重新`render()`，但是它没有，`react`提供了一个`forceUpdate()`方法，可以强制让组件重新渲染，这个方法会跳过该组件的`shouldComponentUpdate()`方法，但它的子组件会触发正常的生命周期，包括`shouldComponentUpdate()`方法，如果返回`true`，那么`React`仍然会更新`Dom`，反之则不会更新，即子组件不受`forceUpdate`影响。
 
 vue 的思想是响应式的，它的数据是可变的，可以被重新赋值，重新赋值是会触发属性的`setter`方法，然后触发`Watcher`的监听，然后就会调用`update()`，去更新`view`，更新的这个中间是会 diff 算法去对比前后两次的变化，把变化的那部分做更新处理。状态发生改变的时候，vue 是会去判断，前后两个数据是否真的发生改变了，如果是同一个值，那么是不会去调用`updata()`这个方法的，这个是 vue 帮我们做的事情。
 
@@ -15,9 +17,9 @@ vue 的思想是响应式的，它的数据是可变的，可以被重新赋值�
 
 2. react 和 vue 的编写方式不同
 
-react 是用 jsx 的方式来编写的，所有的都是通过 js 写的，html 也都放在 js 里面，包括 css 也可以（我没用过，在别的地方有看到过，`styled-component`）。
+react 是用 jsx 的方式来编写的，所有的都是通过 js 写的，html 也都放在 js 里面，包括 css 也可以，依赖`styled-component`库。
 
-vue 的话是分成三块，我觉得跟 jquery 时代比较像，html 是包裹在`<template></template>`标签里面，js 是包裹在`<script></script>`标签里面，css 是包裹在`<style></style>`，集中在一起，当然也是可以分开的，我个人觉得这种方式写组件会挺方便的，不需要文件跳来跳去的，只需要在一个文件里面操作就可以，也方便以后的维护，关于组件的东西都在这个文件里头，简单。
+vue 的话是分成三块，与传统的 web 开发比较像，html 是包裹在`<template></template>`标签里面，js 是包裹在`<script></script>`标签里面，css 是包裹在`<style></style>`，集中在一起，当然也是可以分开的，我个人觉得这种方式写组件会挺方便的，不需要文件跳来跳去的，只需要在一个文件里面操作就可以，也方便以后的维护，关于组件的东西都在这个文件里头，简单。
 
 vue 还有可视化搭建，就很方便，傻瓜式操作，他还是中国人写的，学习资料都是中文，学习起来就更简单一些。
 vue 也内置了很多功能，帮开发者做了很多事情，追求简单开发（到底做了多少不留名的好事，我也要去看源码学习一下）。

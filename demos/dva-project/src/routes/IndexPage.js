@@ -1,12 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "dva";
 import Example from "../components/Example";
 import styles from "./IndexPage.css";
 import { Link } from "dva/router";
 // import { delayed } from "../utils";
-
+const countObj = { count: null };
 function IndexPage(props) {
-  console.log("props", props);
+  const [count, setCount] = useState(0);
+  countObj.count = count;
+  const prevCountRef = useRef();
+  const isDidMounted = useRef();
+  useEffect(() => {
+    console.log("render结束，更新prevCountRef.current", count);
+    prevCountRef.current = count;
+
+    if (isDidMounted.current) {
+      console.log("这次是后续渲染");
+    } else {
+      console.log("这是首次渲染");
+      isDidMounted.current = true;
+    }
+  }, [count]);
+  const prevCount = prevCountRef.current;
+
+  // const thatCount = countObj.count;
+
+  // console.log("props", props);
+
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert("You clicked on: " + countObj.count); // 读取的是指针所指向的内存的值？
+      // alert("You clicked on: " + thatCount); // 读取的是内存里的值，是原来的变量？
+    }, 3000);
+  }
 
   // 一开始 props.loading.effects = {}  isLoading = undefined
   const isLoading = props.loading.effects["example/fetch"];
@@ -26,8 +52,21 @@ function IndexPage(props) {
       ) : (
         <div className={styles.normal}>
           <h1 className={styles.title}>Yay! Welcome to dva!</h1>
-          <div className={styles.welcome} />
 
+          <div className={styles.welcome} />
+          <div>
+            <p>
+              Now: {count}, before: {prevCount}
+            </p>
+            <button
+              onClick={() => {
+                setCount(count + 1);
+              }}
+            >
+              count+1
+            </button>
+            <button onClick={handleAlertClick}>Show alert</button>
+          </div>
           <ul>
             <li>
               <Link to="/demo">npm包——kongmq-demo 页面</Link>

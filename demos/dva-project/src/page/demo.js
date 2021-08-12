@@ -1,5 +1,5 @@
-import demo from "kongmq-demo";
-import Demo from "kongmq-demo";
+// import demo from "kongmq-demo";
+// import Demo from "kongmq-demo";
 import { Link } from "dva/router";
 
 const Page = () => {
@@ -8,7 +8,7 @@ const Page = () => {
       <div style={{ textAlign: "center", lineHeight: "40px" }}>
         <Link to="/">首页</Link>
       </div>
-      <Demo />
+      {/* <Demo /> */}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import D1 from "./D1";
 
 class Example extends React.PureComponent {
   constructor(props) {
@@ -19,8 +20,11 @@ class Example extends React.PureComponent {
     console.log(this.ref.current); // input DOM
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     console.log("this is componentDidUpdate");
+    if (this.props.currentItemData.id !== prevProps.currentItemData.id) {
+      this.forceUpdate();
+    }
   }
 
   componentWillUnmount() {
@@ -59,6 +63,7 @@ class Example extends React.PureComponent {
             })}
         </div>
         <input ref={this.ref} />
+        <D1 currentItemData={this.props.currentItemData} />
       </>
     );
   }
