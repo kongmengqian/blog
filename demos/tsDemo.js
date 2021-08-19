@@ -20,3 +20,13 @@ var greeterMaker = Greeter;
 greeterMaker.standardGreeting = "Hey there!";
 var greeter2 = new greeterMaker("B");
 console.log(greeter2.greet());
+function aliased(arg) {
+    return {
+        num: 1
+    };
+}
+function interfaced(arg) {
+    return {
+        num: 1
+    };
+}

@@ -21,3 +21,18 @@ let greeterMaker: typeof Greeter = Greeter;
 greeterMaker.standardGreeting = "Hey there!";
 let greeter2: Greeter = new greeterMaker("B");
 console.log(greeter2.greet());
+
+interface Interface {
+  /**num */
+  num: number;
+}
+function aliased(arg: Alias): Alias {
+  return {
+    num: 1,
+  };
+}
+function interfaced(arg: Interface): Interface {
+  return {
+    num: 1,
+  };
+}
