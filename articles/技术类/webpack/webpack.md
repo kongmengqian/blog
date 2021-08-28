@@ -1,6 +1,6 @@
-## webpack 核心原理
+# webpack 核心原理
 
-### 工作流程
+## 工作流程
 
 1. 初始化
 
@@ -39,3 +39,9 @@
 【参考文章】
 
 - [一文掌握 Webpack 编译流程](https://mp.weixin.qq.com/s?__biz=MzI0MTUxOTE5NQ==&mid=2247484030&idx=1&sn=d630d4b3995bbfd50f99e781074acfeb)
+
+## webpack loader
+
+参考文章
+
+- [前端工程师都得掌握的 webpack Loader](https://github.com/axuebin/articles/issues/38)(调用顺序，执行顺序，怎么写)

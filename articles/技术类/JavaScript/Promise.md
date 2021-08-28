@@ -133,11 +133,11 @@ Promise.all(promises)
 
 p 的状态由 p1、p2、p3 决定，分成两种情况。
 
-（1）只有 p1、p2、p3 的状态都变成`fulfilled`，p 的状态才会变成`fulfilled`，此时 p1、p2、p3 的返回值组成一个数组，传递给 p 的回调函数。
+（1）只有 p1、p2、p3 的状态都变成`fulfilled`，p 的状态才会变成`fulfilled`，此时 p1、p2、p3 的返回值组成一个数组，传递给 p 的回调函数。(<font color="#b7eb8f">_大家好才是真的好_</font>)
 
-（2）只要 p1、p2、p3 之中有一个被`rejected`，p 的状态就变成`rejected`，此时第一个被`reject`的实例的返回值，会传递给 p 的回调函数。
+（2）只要 p1、p2、p3 之中有一个被`rejected`，p 的状态就变成`rejected`，此时第一个被`reject`的实例的返回值，会传递给 p 的回调函数。(<font color="#b7eb8f">一颗老鼠屎坏了一锅粥</font>)
 
-- `Peomise.race()`同样是将多个 `Promise` 实例，包装成一个新的 `Promise` 实例。与`all()`相反，只要传入的`Promise`中有一个状态发生改变，就会执行`race()`后面的`.then()`回调函数。
+- `Peomise.race()`同样是将多个 `Promise` 实例，包装成一个新的 `Promise` 实例。与`all()`相反，只要传入的`Promise`中有一个状态发生改变，就会执行`race()`后面的`.then()`回调函数。（<font color="#b7eb8f">只要有一个项目投资成功了，就是赚了</font>）
 
 ```js
 const p = Promise.race([p1, p2, p3]);

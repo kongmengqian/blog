@@ -48,7 +48,7 @@ typeof --> undefinde string number boolean function 是可以被区分出来的�
 
 ### typeof
 
-要想弄明白为什么 `typeof` 判断 `null` 为 `object`，其实需要从 js 底层如何存储变量类型来说其。虽然说，这是 JavaScript 设计的一个 bug。
+要想弄明白为什么 `typeof` 判断 `null` 为 `object`，`null`被认为是一个**空的对象引用（空对象指针）**。其实需要从 js 底层如何存储变量类型来说其。虽然说，这是 JavaScript 设计的一个 bug。
 
 在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 `null` 代表的是空指针（大多数平台下值为 `0x00`），因此，`null` 的类型标签是 0，`typeof null` 也因此返回 "object"。曾有一个 ECMAScript 的修复提案（通过选择性加入的方式），但被拒绝了。该提案会导致 `typeof null === 'null'`。
 js 在底层存储变量的时候，会在变量的机器码的低位 1-3 位存储其类型信息：
@@ -64,11 +64,11 @@ js 在底层存储变量的时候，会在变量的机器码的低位 1-3 位存
 - null：所有机器码均为 0
 - undefined：用 −2^30 整数来表示
 
-所以在用 typeof 来判断变量类型的时候，我们需要注意，最好是用 typeof 来判断基本数据类型（包括 symbol），避免对 null 的判断。
+所以在用 typeof 来判断变量类型的时候，我们需要注意，最好是用 typeof 来判断**基本数据类型（包括 symbol）**，避免对 null 的判断。
 
 ### instanceof
 
-`object instanceof constructor`
+`object instanceof constructor` 用于判断引用类型，基础类型（number, string, boolean, symbol, undefined, null）会出错
 
 `instanceof` 和 `typeof` 非常的类似。`instanceof` 运算符用来检测 `constructor.prototype` 是否存在于参数 `object` 的原型链(即`object.__proto__`)上。与 `typeof` 方法不同的是，`instanceof` 方法要求开发者明确地确认对象为某特定类型。它可以判断一个实例是否是其父类型或者祖先类型的实例。
 
